@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SimpleImageView">
+        <attr name="radius" format="dimension"/>
+        <attr name="isSquare" format="boolean"/>
+        <attr name="isCycle" format="boolean"/>
+        <attr name="heightPercent" format="float"/>
+    </declare-styleable>
+</resources>

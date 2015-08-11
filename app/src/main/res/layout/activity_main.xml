@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <com.soli.simpleimageview.library.SimpleImageView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/girl"
+            app:isCycle="true" />
+
+        <com.soli.simpleimageview.library.SimpleImageView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/girl"
+            app:heightPercent="1.4"
+            app:radius="15dp" />
+
+        <com.soli.simpleimageview.library.SimpleImageView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/girl"
+            app:isSquare="true"
+            app:radius="15dp" />
+    </LinearLayout>
+
+
+    <com.soli.simpleimageview.library.SimpleImageView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/girl"
+        app:isSquare="true"
+        app:radius="0dp" />
+</LinearLayout>
