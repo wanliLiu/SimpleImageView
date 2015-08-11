@@ -4,7 +4,7 @@ SimpleImageView
 
 Simpleimageview contains circleImageview,RecImageView,SquareImageview,all of this just set attr.
 
-![](https://github.com/wanliLiu/SimpleImageView/raw/master/images/dem0.png)
+![](https://github.com/wanliLiu/SimpleImageView/raw/master/images/demoImageview.png)
 
 
 you want to dipslay circleImageView,just xml like this:

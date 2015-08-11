@@ -46,4 +46,13 @@
         android:src="@mipmap/girl"
         app:isSquare="true"
         app:radius="0dp" />
+
+    <com.soli.simpleimageview.library.SimpleImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/girl"
+        app:heightPercent="0.4"
+        app:radius="0dp" />
 </LinearLayout>
