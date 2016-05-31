@@ -1,5 +1,6 @@
 package com.soli.simpleimageview.library;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -9,7 +10,6 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.widget.ImageView;
 
 /**
@@ -19,7 +19,7 @@ public class SimpleImageView extends ImageView {
 
     private final RectF roundRect = new RectF();
     private final float defaultRadius = 6;
-    private float radius = 6;
+    private float radius = defaultRadius;
     private final Paint maskPaint = new Paint();
     private final Paint zonePaint = new Paint();
 
@@ -28,48 +28,51 @@ public class SimpleImageView extends ImageView {
     private float heightPercent = 0.0f;
 
     public SimpleImageView(Context context) {
-        this(context,null);
+        super(context);
     }
 
     public SimpleImageView(Context context, AttributeSet attrs) {
-        this(context, attrs,0);
+        super(context, attrs);
+        init(attrs);
     }
 
     public SimpleImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
-
-        TypedArray a = getContext().obtainStyledAttributes(attrs,R.styleable.SimpleImageView);
-        if (a != null)
-        {
-            radius = a.getDimension(R.styleable.SimpleImageView_radius, radius);
-            heightPercent = a.getFloat(R.styleable.SimpleImageView_heightPercent, 0.0f);
-            isCycle = a.getBoolean(R.styleable.SimpleImageView_isCycle,false);
-            isSquare = a.getBoolean(R.styleable.SimpleImageView_isSquare,false);
-            if (isCycle || isSquare)
-            {
-                heightPercent = 1.0f;
-            }
-
-        }
-        a.recycle();
+        init(attrs);
     }
 
-     /**
+    @TargetApi(23)
+    public SimpleImageView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        init(attrs);
+    }
+
+    /**
      *
      */
-    private void init() {
+    private void init(AttributeSet attrs) {
         maskPaint.setAntiAlias(true);
         maskPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
         //
         zonePaint.setAntiAlias(true);
         zonePaint.setColor(Color.WHITE);
         //
-        radius = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, defaultRadius, getResources().getDisplayMetrics());
+//        radius = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, defaultRadius, getResources().getDisplayMetrics());
+
+        TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.SimpleImageView);
+        if (a != null) {
+            radius = a.getDimension(R.styleable.SimpleImageView_radius, radius);
+            heightPercent = a.getFloat(R.styleable.SimpleImageView_heightPercent, heightPercent);
+            isCycle = a.getBoolean(R.styleable.SimpleImageView_isCycle, false);
+            isSquare = a.getBoolean(R.styleable.SimpleImageView_isSquare, false);
+            if (isCycle || isSquare) {
+                heightPercent = 1.0f;
+            }
+        }
+        a.recycle();
     }
 
     /**
-     *
      * @param adius
      */
     public void setRectAdius(float adius) {
@@ -83,38 +86,47 @@ public class SimpleImageView extends ImageView {
     }
 
     @Override
-    protected void onLayout(boolean changed, int left, int top, int right,
-                            int bottom) {
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
         roundRect.set(0, 0, getWidth(), getHeight());
     }
 
     @Override
-    public void draw(Canvas canvas) {
+    protected void onDraw(Canvas canvas) {
         canvas.saveLayer(roundRect, zonePaint, Canvas.ALL_SAVE_FLAG);
-        if (isCycle)
-        {
-            canvas.drawOval(roundRect,zonePaint);
-        }else
-        {
+        if (isCycle) {
+            canvas.drawOval(roundRect, zonePaint);
+        } else {
             canvas.drawRoundRect(roundRect, radius, radius, zonePaint);
         }
 
         canvas.saveLayer(roundRect, maskPaint, Canvas.ALL_SAVE_FLAG);
-        super.draw(canvas);
+        super.onDraw(canvas);
         canvas.restore();
     }
+
+//    @Override
+//    public void draw(Canvas canvas) {
+//        canvas.saveLayer(roundRect, zonePaint, Canvas.ALL_SAVE_FLAG);
+//        if (isCycle) {
+//            canvas.drawOval(roundRect, zonePaint);
+//        } else {
+//            canvas.drawRoundRect(roundRect, radius, radius, zonePaint);
+//        }
+//
+//        canvas.saveLayer(roundRect, maskPaint, Canvas.ALL_SAVE_FLAG);
+//        super.draw(canvas);
+//        canvas.restore();
+//    }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 
-        if (heightPercent > 0.0f)
-        {
+        if (heightPercent > 0.0f) {
             int width = MeasureSpec.getSize(widthMeasureSpec);
-            int height = (int)(width * heightPercent);
-            setMeasuredDimension(width,height);
-        }else
-        {
+            int height = (int) (width * heightPercent);
+            setMeasuredDimension(width, height);
+        } else {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         }
     }
