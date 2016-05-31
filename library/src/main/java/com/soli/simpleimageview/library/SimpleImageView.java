@@ -14,6 +14,11 @@ import android.widget.ImageView;
 
 /**
  * Created by soli on 15/8/11.
+ *
+ * refrence this
+ *
+ * https://github.com/MostafaGazar/CustomShapeImageView
+ * https://github.com/Pkmmte/CircularImageView
  */
 public class SimpleImageView extends ImageView {
 
