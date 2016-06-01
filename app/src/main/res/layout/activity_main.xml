@@ -9,6 +9,7 @@
         android:orientation="vertical"
         android:padding="10dp">
 
+
         <com.soli.simpleimageview.library.SimpleImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -17,6 +18,78 @@
             android:src="@mipmap/girl"
             app:heightPercent="1"
             app:radius="0dp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="10dp"
+            android:src="@mipmap/girl"
+            android:layout_gravity="center_horizontal"
+            app:civ_border_width="10dp"
+            app:civ_border_color="#f12d34" />
+
+        <com.github.siyamed.shapeimageview.CircularImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:src="@mipmap/girl"
+            app:siBorderColor="#f12d34"
+            app:siBorderWidth="6dp" />
+
+        <com.github.siyamed.shapeimageview.RoundedImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:src="@mipmap/girl"
+            app:siBorderColor="#f12d34"
+            app:siBorderWidth="10dp"
+            app:siRadius="20dp"
+            app:siSquare="true" />
+
+        <com.soli.simpleimageview.library.SimpleImageView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/girl"
+            app:heightPercent="1"
+            app:isCycle="true"
+            app:radius="0dp" />
+
+        <com.pkmmte.view.CircularImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/girl"
+            app:border="true"
+            app:border_color="#EEEEEE"
+            app:border_width="4dp"
+            app:selector="true"
+            app:shadow="true" />
+
+
+        <com.meg7.widget.CircleImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/girl" />
+
+        <com.meg7.widget.RectangleImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/girl" />
+
 
         <com.soli.simpleimageview.library.SimpleImageView
             android:layout_width="match_parent"

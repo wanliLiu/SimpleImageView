@@ -18,13 +18,14 @@ import android.widget.ImageView;
  * refrence this
  *
  * https://github.com/MostafaGazar/CustomShapeImageView
+ * https://github.com/siyamed/android-shape-imageview
  * https://github.com/Pkmmte/CircularImageView
  */
 public class SimpleImageView extends ImageView {
 
     private final RectF roundRect = new RectF();
     private final float defaultRadius = 6;
-    private float radius = defaultRadius;
+    private float radius = 0;
     private final Paint maskPaint = new Paint();
     private final Paint zonePaint = new Paint();
 
@@ -98,16 +99,21 @@ public class SimpleImageView extends ImageView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.saveLayer(roundRect, zonePaint, Canvas.ALL_SAVE_FLAG);
-        if (isCycle) {
-            canvas.drawOval(roundRect, zonePaint);
+        if (isCycle || radius > 0) {
+            canvas.saveLayer(roundRect, zonePaint, Canvas.ALL_SAVE_FLAG);
+            if (isCycle) {
+                canvas.drawOval(roundRect, zonePaint);
+            } else {
+                canvas.drawRoundRect(roundRect, radius, radius, zonePaint);
+            }
+
+            canvas.saveLayer(roundRect, maskPaint, Canvas.ALL_SAVE_FLAG);
+            super.onDraw(canvas);
+//            canvas.restore();
         } else {
-            canvas.drawRoundRect(roundRect, radius, radius, zonePaint);
+            super.onDraw(canvas);
         }
 
-        canvas.saveLayer(roundRect, maskPaint, Canvas.ALL_SAVE_FLAG);
-        super.onDraw(canvas);
-        canvas.restore();
     }
 
 //    @Override
