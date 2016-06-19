@@ -23,11 +23,11 @@
             android:id="@+id/profile_image"
             android:layout_width="250dp"
             android:layout_height="250dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:src="@mipmap/girl"
-            android:layout_gravity="center_horizontal"
-            app:civ_border_width="10dp"
-            app:civ_border_color="#f12d34" />
+            app:civ_border_color="#f12d34"
+            app:civ_border_width="10dp" />
 
         <com.github.siyamed.shapeimageview.CircularImageView
             android:layout_width="250dp"
@@ -38,9 +38,42 @@
             app:siBorderColor="#f12d34"
             app:siBorderWidth="6dp" />
 
-        <com.github.siyamed.shapeimageview.RoundedImageView
+        <com.github.siyamed.shapeimageview.StarImageView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:src="@mipmap/girl"
+            app:siSquare="true" />
+
+        <com.github.siyamed.shapeimageview.mask.PorterShapeImageView
             android:layout_width="250dp"
             android:layout_height="250dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:src="@mipmap/girl"
+            app:siShape="@mipmap/star"
+            app:siSquare="true" />
+
+        <com.soli.simpleimageview.library.WHImageView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:src="@mipmap/girl"
+            app:heightPercent="0.5"
+            app:siShape="@drawable/shape_rounded_rectangle" />
+
+        <com.soli.simpleimageview.SVImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:src="@mipmap/girl" />
+
+        <com.github.siyamed.shapeimageview.RoundedImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:src="@mipmap/girl"
